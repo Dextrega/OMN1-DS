@@ -1,0 +1,370 @@
+{
+  "Size": {
+    "Giga": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "FONT_SIZE"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x25}"
+    },
+    "Hero": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "FONT_SIZE"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x15}"
+    },
+    "Heading": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "FONT_SIZE"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x10}"
+    },
+    "Title": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "FONT_SIZE"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x7}"
+    },
+    "Subtitle": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "FONT_SIZE"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x4}"
+    },
+    "Body LG": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "FONT_SIZE"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x2,5}"
+    },
+    "Body MD": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "FONT_SIZE"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x2}"
+    },
+    "Body SM": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "FONT_SIZE"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x1,75}"
+    },
+    "Caption": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "FONT_SIZE"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x1,5}"
+    },
+    "Overline": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "FONT_SIZE"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x1,25}"
+    }
+  },
+  "Line Height": {
+    "Giga": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x25}"
+    },
+    "Hero": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x15}"
+    },
+    "Heading": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x10}"
+    },
+    "Title": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x7}"
+    },
+    "Subtitle": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x5}"
+    },
+    "Body LG": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x3,5}"
+    },
+    "Body MD": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x3}"
+    },
+    "Body SM": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x2,5}"
+    },
+    "Caption": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x2}"
+    },
+    "Overline": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "LINE_HEIGHT"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x1,25}"
+    }
+  },
+  "Letter Spacing": {
+    "ExtraSubtle": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "LETTER_SPACING"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x0}"
+    },
+    "VerySubtle": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "LETTER_SPACING"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x0,125}"
+    },
+    "Subtle": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "LETTER_SPACING"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x0,25}"
+    },
+    "Medium": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "LETTER_SPACING"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x0,5}"
+    },
+    "Strong": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "LETTER_SPACING"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x1}"
+    },
+    "VeryStrong": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "LETTER_SPACING"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x2}"
+    },
+    "ExtraStrong": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "LETTER_SPACING"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "number",
+      "$value": "{System.x4}"
+    }
+  },
+  "Weight": {
+    "Thin": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "FONT_WEIGHT"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "fontWeights",
+      "$value": "100"
+    },
+    "Extra Light": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "FONT_WEIGHT"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "fontWeights",
+      "$value": "200"
+    },
+    "Light": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "FONT_WEIGHT"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "fontWeights",
+      "$value": "300"
+    },
+    "Regular": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "FONT_WEIGHT"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "fontWeights",
+      "$value": "400"
+    },
+    "Medium": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "FONT_WEIGHT"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "fontWeights",
+      "$value": "500"
+    },
+    "Semi Bold": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "FONT_WEIGHT"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "fontWeights",
+      "$value": "600"
+    },
+    "Bold": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "FONT_WEIGHT"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "fontWeights",
+      "$value": "600"
+    },
+    "Extra Bold": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "FONT_WEIGHT"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "fontWeights",
+      "$value": "700"
+    },
+    "Black": {
+      "$extensions": {
+        "com.figma.scopes": [
+          "FONT_WEIGHT"
+        ],
+        "com.figma.hiddenFromPublishing": false
+      },
+      "$type": "fontWeights",
+      "$value": "800"
+    }
+  }
+}

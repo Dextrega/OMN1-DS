@@ -1,0 +1,29 @@
+{
+  "name": "omn1-ds",
+  "private": true,
+  "version": "0.0.0",
+  "description": "OMN1 Design System \u2014 Figma-sourced tokens and components for web (Tailwind) and app (React Native + NativeWind).",
+  "packageManager": "pnpm@12.21.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --filter=@omn1/docs-web",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "tokens:build": "pnpm --filter @omn1/tokens build",
+    "storybook": "pnpm --filter @omn1/docs-web dev",
+    "format": "prettier --write .",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm build && changeset publish",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "@changesets/cli": "^3.0.3",
+    "prettier": "^3.10.1",
+    "turbo": "^2.11.13",
+    "typescript": "~5.9.3"
+  }
+}

@@ -1,0 +1,23 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Introduction" />
+
+# OMN1 Design System
+
+Figma is the source of truth. Everything here is generated from, or checked against, the **Design System — ©2026 0MN1** file.
+
+```
+Figma Variables ─► Tokens Studio export ─► W3C DTCG ─► Style Dictionary ─┬─► CSS variables  ─► Tailwind preset ─► @omn1/ui-web
+                                                                          ├─► resolved JSON  ─► NativeWind vars ─► @omn1/ui-native
+                                                                          └─► TypeScript + figma-variable-map.json
+```
+
+| Package                 | What it is                                                  |
+| ----------------------- | ----------------------------------------------------------- |
+| `@omn1/tokens`          | Tokens, CSS variables, runtime theme resolver, brand API    |
+| `@omn1/tailwind-config` | Tailwind 3 preset — every utility is an `--omn1-*` variable |
+| `@omn1/ui-web`          | React + Tailwind components                                 |
+| `@omn1/ui-native`       | React Native + NativeWind components                        |
+| `@omn1/icons`           | Lucide, behind a registry a brand can override              |
+
+Use the **Theme** and **Brand** toolbar buttons to see light / dark and a client brand applied live.

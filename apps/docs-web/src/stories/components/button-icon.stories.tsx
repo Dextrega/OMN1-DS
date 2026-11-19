@@ -1,0 +1,65 @@
+import { ButtonIcon, iconNames } from "@omn1/ui-web";
+import type { Meta, StoryObj } from "@storybook/react-vite";
+
+const meta = {
+  title: "Components/ButtonIcon",
+  component: ButtonIcon,
+  tags: ["autodocs"],
+  args: {
+    icon: "plus",
+    "aria-label": "Add",
+    size: "md",
+    variation: "primary",
+    appearance: "solid",
+  },
+  argTypes: {
+    icon: { control: "select", options: iconNames },
+    size: { control: "inline-radio", options: ["xs", "sm", "md", "lg"] },
+    variation: {
+      control: "select",
+      options: ["neutral", "primary", "success", "danger", "inverse"],
+    },
+    appearance: { control: "inline-radio", options: ["solid", "outlined", "ghost"] },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Figma: **ButtonIcon** (2058:749). Same matrix as ButtonCTA, square and icon-only — `aria-label` is required. MD is verified; other sizes' icon metrics and the status dot are provisional.",
+      },
+    },
+  },
+} satisfies Meta<typeof ButtonIcon>;
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Playground: Story = {};
+export const WithStatusDot: Story = {
+  args: { icon: "bell", "aria-label": "Notifications", dot: true },
+};
+export const Loading: Story = { args: { loading: true } };
+
+export const Matrix: Story = {
+  parameters: { layout: "fullscreen" },
+  render: (args) => (
+    <div className="flex flex-col gap-subtle p-strong">
+      {(["solid", "outlined", "ghost"] as const).map((appearance) => (
+        <div key={appearance} className="flex flex-wrap items-center gap-subtle">
+          {(["xs", "sm", "md", "lg"] as const).flatMap((size) =>
+            (["neutral", "primary", "success", "danger"] as const).map((variation) => (
+              <ButtonIcon
+                key={`${size}${variation}`}
+                {...args}
+                size={size}
+                variation={variation}
+                appearance={appearance}
+                icon="heart"
+                aria-label={`${variation} ${size}`}
+              />
+            )),
+          )}
+        </div>
+      ))}
+    </div>
+  ),
+};

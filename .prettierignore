@@ -1,0 +1,8 @@
+node_modules
+dist
+.turbo
+storybook-static
+pnpm-lock.yaml
+packages/tokens/figma-export
+packages/tokens/src/generated
+.changeset/*.md

@@ -1,0 +1,40 @@
+{
+  "name": "@omn1/tokens",
+  "version": "0.1.0",
+  "description": "OMN1 design tokens \u2014 Figma Variables \u2192 W3C DTCG \u2192 Style Dictionary \u2192 CSS variables, TypeScript, Tailwind theme and React Native theme.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./css": "./dist/css/tokens.css",
+    "./css/alias.css": "./dist/css/alias.css",
+    "./theme.json": "./dist/theme.json",
+    "./figma-variable-map.json": "./dist/figma-variable-map.json",
+    "./json/*": "./dist/json/*"
+  },
+  "files": [
+    "dist",
+    "figma-export"
+  ],
+  "scripts": {
+    "build:tokens": "node scripts/build.mjs",
+    "build": "pnpm build:tokens && tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.0",
+    "style-dictionary": "^5.8.0",
+    "tsup": "^9.0.0",
+    "typescript": "~5.9.3",
+    "vitest": "^5.1.1"
+  }
+}
