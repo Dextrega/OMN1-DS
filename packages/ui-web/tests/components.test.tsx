@@ -1,7 +1,22 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-import { Badge, ButtonCTA, ButtonIcon, Checkbox, TextInput } from "../src";
+import {
+  Badge,
+  ButtonCTA,
+  ButtonIcon,
+  ButtonLink,
+  Checkbox,
+  Chip,
+  RadioGroup,
+  Radiobutton,
+  Tabs,
+  TabsBase,
+  TabsList,
+  TabsPanel,
+  TextInput,
+  Toggle,
+} from "../src";
 
 describe("ButtonCTA", () => {
   it("renders Figma MD / Primary / Solid by default with token classes", () => {
@@ -158,5 +173,158 @@ describe("Checkbox", () => {
   it("flags invalid", () => {
     render(<Checkbox label="Terms" invalid />);
     expect(screen.getByRole("checkbox")).toBeInvalid();
+  });
+});
+
+describe("ButtonLink (provisional)", () => {
+  it("renders a button by default and an anchor with href", () => {
+    const { rerender } = render(<ButtonLink>Go</ButtonLink>);
+    expect(screen.getByRole("button", { name: "Go" })).toHaveClass(
+      "text-surface-primary-medium",
+      "hover:underline",
+    );
+    rerender(<ButtonLink href="/x">Go</ButtonLink>);
+    expect(screen.getByRole("link", { name: "Go" })).toHaveAttribute("href", "/x");
+  });
+
+  it("disabled / loading anchors drop href and swallow clicks", async () => {
+    const onClick = vi.fn();
+    render(
+      <ButtonLink href="/x" loading onClick={onClick}>
+        Go
+      </ButtonLink>,
+    );
+    const a = screen.getByRole("link");
+    expect(a).not.toHaveAttribute("href");
+    expect(a).toHaveAttribute("aria-busy", "true");
+    await userEvent.click(a);
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
+  it("loading buttons swallow clicks", async () => {
+    const onClick = vi.fn();
+    render(
+      <ButtonLink loading onClick={onClick}>
+        Go
+      </ButtonLink>,
+    );
+    await userEvent.click(screen.getByRole("button"));
+    expect(onClick).not.toHaveBeenCalled();
+  });
+});
+
+describe("Radiobutton / RadioGroup (provisional)", () => {
+  it("selects a single option inside a group", async () => {
+    const onValueChange = vi.fn();
+    render(
+      <RadioGroup defaultValue="a" onValueChange={onValueChange}>
+        <Radiobutton value="a" label="A" />
+        <Radiobutton value="b" label="B" />
+      </RadioGroup>,
+    );
+    expect(screen.getByLabelText("A")).toBeChecked();
+    await userEvent.click(screen.getByLabelText("B"));
+    expect(screen.getByLabelText("B")).toBeChecked();
+    expect(screen.getByLabelText("A")).not.toBeChecked();
+    expect(onValueChange).toHaveBeenCalledWith("b");
+  });
+
+  it("maps Figma states to attributes", () => {
+    render(<Radiobutton label="X" invalid disabled />);
+    const r = screen.getByLabelText("X");
+    expect(r).toBeDisabled();
+    expect(r).toHaveAttribute("aria-invalid", "true");
+    expect(r).toHaveClass("size-full", "aria-[invalid=true]:border-stroke-danger-medium");
+  });
+});
+
+describe("Toggle (provisional)", () => {
+  it("is a switch that toggles uncontrolled and reports changes", async () => {
+    const onCheckedChange = vi.fn();
+    render(<Toggle label="Wifi" onCheckedChange={onCheckedChange} />);
+    const sw = screen.getByRole("switch", { name: "Wifi" });
+    expect(sw).toHaveAttribute("aria-checked", "false");
+    await userEvent.click(sw);
+    expect(sw).toHaveAttribute("aria-checked", "true");
+    expect(onCheckedChange).toHaveBeenCalledWith(true);
+  });
+
+  it("controlled value wins; disabled does not toggle", async () => {
+    const onCheckedChange = vi.fn();
+    const { rerender } = render(
+      <Toggle checked={false} onCheckedChange={onCheckedChange} aria-label="a" />,
+    );
+    await userEvent.click(screen.getByRole("switch"));
+    expect(screen.getByRole("switch")).toHaveAttribute("aria-checked", "false");
+    rerender(<Toggle disabled aria-label="a" onCheckedChange={onCheckedChange} />);
+    await userEvent.click(screen.getByRole("switch"));
+    expect(onCheckedChange).toHaveBeenCalledTimes(1);
+  });
+
+  it("clicking the label toggles", async () => {
+    render(<Toggle label="Wifi" />);
+    await userEvent.click(screen.getByText("Wifi"));
+    expect(screen.getByRole("switch")).toHaveAttribute("aria-checked", "true");
+  });
+});
+
+describe("Chip (provisional)", () => {
+  it("is a toggle button using aria-pressed", async () => {
+    const onSelectedChange = vi.fn();
+    render(<Chip onSelectedChange={onSelectedChange}>Tag</Chip>);
+    const chip = screen.getByRole("button", { name: "Tag" });
+    expect(chip).toHaveAttribute("aria-pressed", "false");
+    expect(chip).toHaveClass("h-x4-5");
+    await userEvent.click(chip);
+    expect(chip).toHaveAttribute("aria-pressed", "true");
+    expect(onSelectedChange).toHaveBeenCalledWith(true);
+  });
+
+  it("SM is 24px high", () => {
+    render(<Chip size="sm">Tag</Chip>);
+    expect(screen.getByRole("button")).toHaveClass("h-x3");
+  });
+});
+
+describe("Tabs / TabsBase (provisional)", () => {
+  const setup = (props = {}) =>
+    render(
+      <Tabs defaultValue="a" {...props}>
+        <TabsList aria-label="Sections">
+          <TabsBase value="a">A</TabsBase>
+          <TabsBase value="b" disabled>
+            B
+          </TabsBase>
+          <TabsBase value="c">C</TabsBase>
+        </TabsList>
+        <TabsPanel value="a">Panel A</TabsPanel>
+        <TabsPanel value="c">Panel C</TabsPanel>
+      </Tabs>,
+    );
+
+  it("wires roles, selection and panels", async () => {
+    setup();
+    expect(screen.getByRole("tablist")).toBeInTheDocument();
+    expect(screen.getByRole("tab", { name: "A" })).toHaveAttribute("aria-selected", "true");
+    expect(screen.getByRole("tabpanel")).toHaveTextContent("Panel A");
+    await userEvent.click(screen.getByRole("tab", { name: "C" }));
+    expect(screen.getByRole("tabpanel")).toHaveTextContent("Panel C");
+  });
+
+  it("roving tabindex + arrow keys skip disabled tabs", async () => {
+    setup();
+    screen.getByRole("tab", { name: "A" }).focus();
+    await userEvent.keyboard("{ArrowRight}");
+    expect(screen.getByRole("tab", { name: "C" })).toHaveFocus();
+    expect(screen.getByRole("tab", { name: "C" })).toHaveAttribute("aria-selected", "true");
+    expect(screen.getByRole("tab", { name: "A" })).toHaveAttribute("tabindex", "-1");
+    await userEvent.keyboard("{Home}");
+    expect(screen.getByRole("tab", { name: "A" })).toHaveFocus();
+  });
+
+  it("throws outside <Tabs>", () => {
+    const spy = vi.spyOn(console, "error").mockImplementation(() => {});
+    expect(() => render(<TabsBase value="x">x</TabsBase>)).toThrow(/inside <Tabs>/);
+    spy.mockRestore();
   });
 });

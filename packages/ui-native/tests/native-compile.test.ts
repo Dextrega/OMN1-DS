@@ -7,7 +7,21 @@ import { describe, expect, it } from "vitest";
 import { badgeContainer, badgeTone } from "../src/components/badge/styles";
 import { buttonCtaContainer, buttonCtaLabel } from "../src/components/button-cta/styles";
 import { buttonIconShape } from "../src/components/button-icon/styles";
+import {
+  buttonLinkContainer,
+  buttonLinkLabel,
+  buttonLinkTone,
+} from "../src/components/button-link/styles";
 import { checkboxBox } from "../src/components/checkbox/styles";
+import { chipContainer, chipLabel } from "../src/components/chips/styles";
+import { radioCircle, radioDot } from "../src/components/radiobutton/styles";
+import {
+  tabsBaseContainer,
+  tabsBaseLabel,
+  tabsIndicator,
+  tabsList,
+} from "../src/components/tabs/styles";
+import { toggleThumb, toggleTrack } from "../src/components/toggle/styles";
 import { textInputField } from "../src/components/text-input/styles";
 
 // Same switch NativeWind's Metro transformer flips: compile for a native platform, not the web.
@@ -67,6 +81,40 @@ function allClasses(): string[] {
       for (const required of [true, false])
         for (const disabled of [true, false])
           add(checkboxBox({ selected, invalid, required, disabled }));
+  // batch 2 (provisional)
+  for (const disabled of [true, false]) add(buttonLinkContainer({ disabled }));
+  for (const size of ["sm", "md", "lg"] as const)
+    for (const variation of ["neutral", "primary", "danger", "success", "inverse"] as const)
+      for (const pressed of [true, false])
+        for (const disabled of [true, false])
+          add(buttonLinkLabel({ size, tone: buttonLinkTone(variation, pressed, disabled) }));
+  for (const selected of [true, false])
+    for (const invalid of [true, false])
+      for (const required of [true, false])
+        for (const disabled of [true, false]) {
+          add(radioCircle({ selected, invalid, required, disabled }));
+          add(toggleTrack({ on: selected, invalid, required, disabled }));
+        }
+  for (const invalid of [true, false])
+    for (const disabled of [true, false]) add(radioDot({ invalid, disabled }));
+  for (const on of [true, false])
+    for (const disabled of [true, false]) add(toggleThumb({ on, disabled }));
+  for (const size of ["sm", "md"] as const)
+    for (const appearance of ["filled", "outlined"] as const)
+      for (const selected of [true, false])
+        for (const disabled of [true, false]) {
+          add(chipContainer({ size, appearance, selected, disabled }));
+          add(chipLabel({ size, appearance, selected, disabled }));
+        }
+  for (const orientation of ["horizontal", "vertical"] as const) {
+    add(tabsList(orientation));
+    add(tabsIndicator(orientation));
+    for (const disabled of [true, false]) {
+      add(tabsBaseContainer({ orientation, disabled }));
+      for (const selected of [true, false]) add(tabsBaseLabel({ selected, disabled }));
+    }
+  }
+  add("gap-medium flex-col");
   // classes written inline in the components
   add(
     "font-sans text-body-md text-caption text-alpha-inverse-strong text-surface-on-neutral-medium text-surface-on-neutral-subtle text-surface-danger-medium text-surface-on-danger-very-subtle text-surface-on-primary-very-subtle",
