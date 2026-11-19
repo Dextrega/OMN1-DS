@@ -6,6 +6,11 @@ export * from "./components/button-icon";
 export * from "./components/badge";
 export * from "./components/text-input";
 export * from "./components/checkbox";
+export * from "./components/button-link";
+export * from "./components/radiobutton";
+export * from "./components/toggle";
+export * from "./components/chips";
+export * from "./components/tabs";
 
 export { Icon, IconProvider, iconNames } from "@omn1/icons/native";
 export type { IconName, IconRegistry } from "@omn1/icons/native";

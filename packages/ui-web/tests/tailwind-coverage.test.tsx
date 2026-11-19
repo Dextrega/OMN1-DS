@@ -3,7 +3,22 @@ import { render } from "@testing-library/react";
 import postcss from "postcss";
 import tailwind from "tailwindcss";
 import { describe, expect, it } from "vitest";
-import { Badge, ButtonCTA, ButtonIcon, Checkbox, TextInput } from "../src";
+import {
+  Badge,
+  ButtonCTA,
+  ButtonIcon,
+  ButtonLink,
+  Checkbox,
+  Chip,
+  RadioGroup,
+  Radiobutton,
+  Tabs,
+  TabsBase,
+  TabsList,
+  TabsPanel,
+  TextInput,
+  Toggle,
+} from "../src";
 
 /**
  * Every class a component can emit must exist as a real utility generated from the OMN1 preset.
@@ -90,6 +105,68 @@ function renderEverything() {
       <Checkbox label="Two" defaultChecked required />
       <Checkbox label="Three" indeterminate invalid />
       <Checkbox label="Four" disabled defaultChecked />
+      {(["sm", "md", "lg"] as const).flatMap((size) =>
+        variations.map((variation) => (
+          <ButtonLink
+            key={`${size}${variation}`}
+            size={size}
+            variation={variation}
+            leadingIcon="plus"
+            trailingIcon="arrow-right"
+          >
+            Link
+          </ButtonLink>
+        )),
+      )}
+      <ButtonLink href="/x" loading>
+        Anchor
+      </ButtonLink>
+      <ButtonLink href="/x" disabled>
+        Anchor
+      </ButtonLink>
+      <ButtonLink disabled>Disabled</ButtonLink>
+      <Radiobutton label="One" description="More" />
+      <Radiobutton label="Two" defaultChecked required />
+      <Radiobutton label="Three" invalid />
+      <Radiobutton label="Four" disabled defaultChecked />
+      <RadioGroup defaultValue="a" invalid required orientation="horizontal">
+        <Radiobutton value="a" label="A" />
+        <Radiobutton value="b" label="B" />
+      </RadioGroup>
+      <Toggle label="One" description="More" />
+      <Toggle label="Two" defaultChecked required />
+      <Toggle label="Three" invalid defaultChecked name="t" />
+      <Toggle label="Four" disabled defaultChecked />
+      {(["sm", "md"] as const).flatMap((size) =>
+        (["filled", "outlined"] as const).flatMap((appearance) =>
+          [false, true].map((selected) => (
+            <div key={`${size}${appearance}${selected}`}>
+              <Chip size={size} appearance={appearance} selected={selected} leadingIcon="star">
+                Chip
+              </Chip>
+              <Chip size={size} appearance={appearance} selected={selected} disabled>
+                Chip
+              </Chip>
+            </div>
+          )),
+        ),
+      )}
+      {(["horizontal", "vertical"] as const).map((orientation) => (
+        <Tabs key={orientation} defaultValue="a" orientation={orientation}>
+          <TabsList>
+            <TabsBase value="a" leadingIcon="house">
+              A
+            </TabsBase>
+            <TabsBase value="b" trailingIcon="chevron-down">
+              B
+            </TabsBase>
+            <TabsBase value="c" disabled>
+              C
+            </TabsBase>
+          </TabsList>
+          <TabsPanel value="a">Panel A</TabsPanel>
+        </Tabs>
+      ))}
     </div>,
   );
 }
