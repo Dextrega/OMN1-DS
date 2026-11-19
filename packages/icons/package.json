@@ -1,0 +1,75 @@
+{
+  "name": "@omn1/icons",
+  "version": "0.1.0",
+  "description": "OMN1 icon set \u2014 Lucide, exposed through a registry so a client brand can swap any icon without touching components.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/web.cjs",
+  "module": "./dist/web.js",
+  "types": "./dist/web.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/web.d.ts",
+      "import": "./dist/web.js",
+      "require": "./dist/web.cjs"
+    },
+    "./native": {
+      "types": "./dist/native.d.ts",
+      "import": "./dist/native.js",
+      "require": "./dist/native.cjs"
+    },
+    "./names": {
+      "types": "./dist/names.d.ts",
+      "import": "./dist/names.js",
+      "require": "./dist/names.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "lucide-react": ">=0.400.0",
+    "lucide-react-native": ">=0.400.0",
+    "nativewind": "^4.0.0",
+    "react-native-svg": ">=15"
+  },
+  "peerDependenciesMeta": {
+    "lucide-react": {
+      "optional": true
+    },
+    "lucide-react-native": {
+      "optional": true
+    },
+    "nativewind": {
+      "optional": true
+    },
+    "react-native-svg": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "^22.19.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "jsdom": "^31.0.1",
+    "lucide-react": "^1.75.0",
+    "lucide-react-native": "^1.75.0",
+    "nativewind": "^4.2.7",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-native": "^0.88.1",
+    "react-native-svg": "^15.16.1",
+    "tailwindcss": "^3.4.19",
+    "tsup": "^9.0.0",
+    "typescript": "~5.9.3",
+    "vitest": "^5.1.1"
+  }
+}

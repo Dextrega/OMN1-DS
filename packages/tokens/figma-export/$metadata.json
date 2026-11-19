@@ -1,0 +1,8 @@
+{
+  "tokenSetOrder": [
+    "Colors/Light",
+    "Colors/Dark",
+    "Spacing/Spacing",
+    "Typography/Typography"
+  ]
+}

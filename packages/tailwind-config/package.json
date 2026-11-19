@@ -1,0 +1,33 @@
+{
+  "name": "@omn1/tailwind-config",
+  "version": "0.1.0",
+  "description": "Tailwind CSS preset for the OMN1 design system. Every utility resolves to an --omn1-* CSS variable, so themes and client brands switch at runtime.",
+  "license": "UNLICENSED",
+  "type": "commonjs",
+  "main": "./index.cjs",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.cjs",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "build": "echo \"@omn1/tailwind-config: nothing to build\"",
+    "test": "node --test \"tests/*.test.cjs\""
+  },
+  "dependencies": {
+    "@omn1/tokens": "workspace:*"
+  },
+  "peerDependencies": {
+    "tailwindcss": ">=3.3.0 <4"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
